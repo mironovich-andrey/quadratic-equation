@@ -1,32 +1,13 @@
 module.exports = function solveEquation(equation) {
-  // your implementation
-
-   var arr1 = [];
-   var arr = equation.split(' ');
-   var a = (arr[0]);
-   var b = (arr[3]+ arr[4]);
-   var c = (arr[7]+ arr[8]);
-   var d = (b*b - 4 * a * c);    
-
-   if (d>0)
-   {
-       var d = Math.round(Math.sqrt(d));
-       console.log(d);
-       arr1[0] = ((-b)+d)/(2*a);
-       arr1[1] = ((-b)-d)/(2*a);
-   }
-
-   else
-   {
-       return null;
-   }
-
-   Math.round(arr1);
-   arr1.sort(compareNumeric);
-   return arr1;
+  var a = parseInt(equation);
+  var substs = equation.split('* x');
+  var b = parseInt(substs[1].split('^2')[1].replace(/\s/g, ""));
+  var c = parseInt(substs[2].replace(/\s/g, ""));
+  var d = (b * b) - (4 * a * c);
+  return [
+    (-b + Math.sqrt(d)) / (2 * a),
+    (-b - Math.sqrt(d)) / (2 * a)
+  ]
+    .map(Math.round)
+    .sort((a, b) => a - b);
 }
-
-function compareNumeric(x, y)
-{
-   return x - y;
-} 
