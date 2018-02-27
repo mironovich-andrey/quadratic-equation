@@ -11,4 +11,3 @@ module.exports = function solveEquation(equation) {
     .map(Math.round)
     .sort((a, b) => a - b);
 }
- console.log(equation); 
